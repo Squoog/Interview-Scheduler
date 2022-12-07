@@ -11,3 +11,16 @@ export function getAppointmentsForDay(state, day) {
 
   return arr;
 }
+
+export function getInterview(state, interview) {
+  if (interview === null) {
+    return null;
+  }
+
+  const interviewer = Object.values(state.interviewers).find(elem => elem.id === interview.interviewer);
+
+  return {
+    "student": interview.student,
+    "interviewer": interviewer
+  };
+}
