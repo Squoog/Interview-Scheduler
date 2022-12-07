@@ -24,3 +24,16 @@ export function getInterview(state, interview) {
     "interviewer": interviewer
   };
 }
+
+export function getInterviewersForDay(state, day) {
+  const scheduleDay = state.days.find(elem => elem.name === day);
+  if (state.days.length === 0 || ! scheduleDay) {
+    return [];
+  };
+
+  const arr = scheduleDay.appointments.map(appointment => {
+    const interviewerID = state.appointments[appointment].interview?.interviewer
+    return state.interviewers[interviewerID];
+  });
+  return arr;
+}
