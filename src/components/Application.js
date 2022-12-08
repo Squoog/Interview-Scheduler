@@ -33,11 +33,29 @@ export default function Application(props) {
 
     
     const URL = `http://localhost:8001/api/appointments/${id}`;
-    return axios({URL, method: "PUT", data: appointment}).then((response) => {
+    return axios({URL, method: "PUT", data: appointment}).then(() => {
       setState({...state, appointments})
     });
     
   };
+
+  const cancelInterview = (id) => {
+    const appointment = {
+      ...state.appointment[id],
+      interview: null
+    }
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    }
+    
+    const URL = `http://localhost:8001/api/appointments/${id}`;
+    return axios({URL, method: "DELETE", data: appointment}).then(() => {
+      setState({...state, appointments})
+    });
+
+  }
 
   useEffect(()=>{
     Promise.all([
@@ -63,6 +81,7 @@ export default function Application(props) {
       interview={interview}
       interviewers={dailyInterviewers}
       bookInterview={bookInterview}
+      cancelInterview={cancelInterview}
     />)
   })
 
