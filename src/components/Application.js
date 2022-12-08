@@ -31,17 +31,32 @@ export default function Application(props) {
       [id]: appointment
     }
 
-    
-    const URL = `http://localhost:8001/api/appointments/${id}`;
-    return axios({URL, method: "PUT", data: appointment}).then(() => {
+    return axios.put(`/api/appointments/${id}`, { interview })
+    .then(() => {
       setState({...state, appointments})
+    })
+    .catch(error => {
+      console.log("!");
+      console.log(error);
+      throw error;
     });
+    
+    // const URL = `http://localhost:8001/api/appointments/${id}`;
+    // return axios({URL, method: "PUT", data: appointment})
+    // .then(() => {
+    //   setState({...state, appointments})
+    // })
+    // .catch(error => {
+    //   console.log("!");
+    //   console.log(error);
+    //   throw error;
+    // });
     
   };
 
   const cancelInterview = (id) => {
     const appointment = {
-      ...state.appointment[id],
+      ...state.appointments[id],
       interview: null
     }
 
@@ -50,9 +65,19 @@ export default function Application(props) {
       [id]: appointment
     }
     
-    const URL = `http://localhost:8001/api/appointments/${id}`;
-    return axios({URL, method: "DELETE", data: appointment}).then(() => {
+    // const URL = `http://localhost:8001/api/appointments/${id}`;
+    // return axios({URL, method: "DELETE", data: appointment}).then(() => {
+    //   setState({...state, appointments})
+    // });
+
+    return axios.delete(`/api/appointments/${id}`)
+    .then(() => {
       setState({...state, appointments})
+    })
+    .catch(error => {
+      console.log("!");
+      console.log(error);
+      throw error;
     });
 
   }
