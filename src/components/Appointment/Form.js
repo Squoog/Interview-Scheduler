@@ -22,7 +22,7 @@ export default function Form (props) {
     event.preventDefault()
   }
 
-  function validate() {
+  const validate = () => {
     if (student === "") {
       setError("student name cannot be blank");
       return;
@@ -33,6 +33,7 @@ export default function Form (props) {
       return;
     }
   
+    setError("");
     props.onSave(student, interviewer);
   }
 

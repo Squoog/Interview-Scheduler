@@ -28,7 +28,11 @@ export default function DayListItem(props) {
   const remainingSpots = formatSpots(spots);
   
   return (
-    <li className={itemClass} selected={selected} onClick={clickHandler}>
+    <li
+      data-testid="day"
+      className={itemClass}
+      selected={selected}
+      onClick={clickHandler} >
       <h2 className="text--regular">{props.name}</h2> 
       <h3 className="text--light">{remainingSpots}</h3>
     </li>
