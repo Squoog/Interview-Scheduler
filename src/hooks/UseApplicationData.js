@@ -35,7 +35,6 @@ export default function useApplicationData(){
       setState({...state, appointments, spots})
     })
     .catch(error => {
-      console.log("!");
       console.log(error);
       throw error;
     });
@@ -65,7 +64,6 @@ export default function useApplicationData(){
       setState({...state, appointments, spots})
     })
     .catch(error => {
-      console.log("!");
       console.log(error);
       throw error;
     });
