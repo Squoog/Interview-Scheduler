@@ -29,7 +29,11 @@ npm run storybook
 Below, you can find some gifs showing the scheduler in action.
 
 ![The interview scheduler](/Images/Browse.gif)
+
 ![Booking an interview](/Images/Addition.gif)
+
 ![Editing an existing interview](/Images/Edit.gif)
+
 ![Cancelling an interview](/Images/Deletion.gif)
+
 ![Sometime we make mistakes](/Images/Oops.gif)
