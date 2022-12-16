@@ -10,10 +10,9 @@ export default function useApplicationData(){
   });
 
   const setDay = day => setState({...state, day});
-  const setDays = days => setState(prev => ({... prev, days}));
 
+  // Updates spots remaining after a booked or cancelled appointment
   const updateSpots = (appointments) => {
-
     const currentDay = state.days.find((d) => d.name === state.day)
     const currentDayIndex = state.days.findIndex((d) => d.name === state.day)
     const spots = currentDay.appointments.filter((appointmentID) => appointments[appointmentID].interview === null).length
@@ -22,6 +21,7 @@ export default function useApplicationData(){
     return updatedDays
   }
 
+  // Adds an interview, adds it to the display and updates spots remaining
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
@@ -44,6 +44,7 @@ export default function useApplicationData(){
     
   };
 
+  // Cancels an interview, removes it from the display and updates spots remaining
   const cancelInterview = (id) => {
     const appointment = {
       ...state.appointments[id],
